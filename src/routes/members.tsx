@@ -4,16 +4,17 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
 import { Github, Linkedin } from "lucide-react";
+import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/members")({
-  head: () => ({
-    meta: [
-      { title: "Team - TechSquad" },
-      { name: "description", content: "Meet the builders, designers, growth leads, and software developers at TechSquad Cameroon." },
-      { property: "og:title", content: "Team - TechSquad" },
-      { property: "og:description", content: "Meet the members of TechSquad Cameroon." },
-    ],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "Team - TechSquad Cameroon | builders, designers, and growth leads",
+      description:
+        "Meet the TechSquad Cameroon team: software developers, designers, and growth leads building practical digital products.",
+      path: "/members",
+      image: DEFAULT_OG_IMAGE,
+    }),
   component: MembersPage,
 });
 

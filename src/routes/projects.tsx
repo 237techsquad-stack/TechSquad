@@ -3,16 +3,17 @@ import { motion } from "framer-motion";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
+import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/projects")({
-  head: () => ({
-    meta: [
-      { title: "Projects - TechSquad" },
-      { name: "description", content: "TechSquad Cameroon projects, including LaneForge, client services, CodeConnect, and CAMIHACK 2026." },
-      { property: "og:title", content: "Projects - TechSquad" },
-      { property: "og:description", content: "A selection of TechSquad Cameroon initiatives and builds." },
-    ],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "Projects - TechSquad Cameroon | LaneForge, client work, hackathons",
+      description:
+        "See TechSquad Cameroon's flagship projects, including LaneForge, e-commerce work, CodeConnect, and CAMIHACK 2026.",
+      path: "/projects",
+      image: DEFAULT_OG_IMAGE,
+    }),
   component: ProjectsPage,
 });
 

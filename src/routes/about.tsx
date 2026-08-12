@@ -4,16 +4,17 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { BookOpen, Compass, HeartHandshake, Rocket } from "lucide-react";
+import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About - TechSquad" },
-      { name: "description", content: "The story of TechSquad Cameroon, from a student initiative at VISHI Higher Institute to LaneForge and client software services." },
-      { property: "og:title", content: "About - TechSquad" },
-      { property: "og:description", content: "How TechSquad Cameroon began and what it is building." },
-    ],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "About TechSquad Cameroon - Student-led software and training",
+      description:
+        "Discover TechSquad Cameroon's journey from a student initiative to a team building software infrastructure, client services, and LaneForge.",
+      path: "/about",
+      image: DEFAULT_OG_IMAGE,
+    }),
   component: AboutPage,
 });
 

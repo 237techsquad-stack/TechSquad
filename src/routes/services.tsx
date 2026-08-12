@@ -4,16 +4,17 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
 import { ArrowRight, Brain, Code2, Palette, Smartphone, Users, Wand2 } from "lucide-react";
+import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services - TechSquad" },
-      { name: "description", content: "Software development, web platforms, brand growth, UI/UX, and student-focused digital solutions from TechSquad Cameroon." },
-      { property: "og:title", content: "Services - TechSquad" },
-      { property: "og:description", content: "Explore TechSquad Cameroon services." },
-    ],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "Services - TechSquad Cameroon | Software, brand growth, youth training",
+      description:
+        "Explore TechSquad Cameroon's services for software, UI/UX, brand growth, and student career platforms like LaneForge.",
+      path: "/services",
+      image: DEFAULT_OG_IMAGE,
+    }),
   component: ServicesPage,
 });
 

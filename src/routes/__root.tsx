@@ -10,6 +10,16 @@ import {
 import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import {
+  absolute,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  DEFAULT_TITLE,
+  DEFAULT_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+  TWITTER_HANDLE,
+} from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -71,24 +81,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "TechSquad - Empowering Africa's Digital Future" },
-      {
-        name: "description",
-        content:
-          "TechSquad Cameroon builds software infrastructure, trains young digital talent, and prepares LaneForge for students and youths.",
-      },
-      { name: "author", content: "TechSquad Cameroon" },
-      { property: "og:title", content: "TechSquad - Empowering Africa's Digital Future" },
-      {
-        property: "og:description",
-        content: "Software solutions, digital skills, brand growth, and LaneForge from TechSquad Cameroon.",
-      },
+      { title: DEFAULT_TITLE },
+      { name: "description", content: DEFAULT_DESCRIPTION },
+      { name: "author", content: SITE_NAME },
+      { name: "keywords", content: DEFAULT_KEYWORDS },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: DEFAULT_TITLE },
+      { property: "og:description", content: DEFAULT_DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: SITE_NAME },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: DEFAULT_OG_IMAGE },
+      { property: "og:image:alt", content: "TechSquad brand preview image" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: TWITTER_HANDLE },
+      { name: "twitter:title", content: DEFAULT_TITLE },
+      { name: "twitter:description", content: DEFAULT_DESCRIPTION },
+      { name: "twitter:image", content: DEFAULT_OG_IMAGE },
+      { name: "twitter:image:alt", content: "TechSquad brand preview image" },
+      { name: "theme-color", content: "#071733" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "canonical", href: SITE_URL },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -108,6 +124,29 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: SITE_NAME,
+              description: DEFAULT_DESCRIPTION,
+              url: SITE_URL,
+              logo: absolute('/images/logo-full.png'),
+              sameAs: ["https://twitter.com/TechSquadCam"],
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  email: "237techsquad@gmail.com",
+                  contactType: "customer service",
+                  areaServed: "CM",
+                  availableLanguage: ["English", "French"],
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body>
         {children}
