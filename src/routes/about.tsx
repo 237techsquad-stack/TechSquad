@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
+<<<<<<< HEAD
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { BookOpen, Camera, Compass, MapPin, Rocket, ShieldCheck, Users } from "lucide-react";
 import { usePreferences } from "@/lib/preferences";
@@ -19,6 +20,20 @@ export const Route = createFileRoute("/about")({
       { property: "og:description", content: "How TECHSQUAD Cameroon began and what it is building." },
     ],
   }),
+=======
+import { BookOpen, Compass, HeartHandshake, Rocket } from "lucide-react";
+import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
+
+export const Route = createFileRoute("/about")({
+  head: () =>
+    buildPageHead({
+      title: "About TechSquad Cameroon - Student-led software and training",
+      description:
+        "Discover TechSquad Cameroon's journey from a student initiative to a team building software infrastructure, client services, and LaneForge.",
+      path: "/about",
+      image: DEFAULT_OG_IMAGE,
+    }),
+>>>>>>> 4f48a8fcb1c1af9212b616171d3f3bf33de77b11
   component: AboutPage,
 });
 

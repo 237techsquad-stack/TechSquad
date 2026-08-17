@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
+<<<<<<< HEAD
 import { ExternalLink, Github } from "lucide-react";
 import { usePreferences } from "@/lib/preferences";
 import ecommercePhoto from "../../images/Ecommerce Website.jpg";
@@ -19,6 +20,19 @@ export const Route = createFileRoute("/projects")({
       { property: "og:description", content: "A selection of TECHSQUAD Cameroon initiatives and builds." },
     ],
   }),
+=======
+import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
+
+export const Route = createFileRoute("/projects")({
+  head: () =>
+    buildPageHead({
+      title: "Projects - TechSquad Cameroon | LaneForge, client work, hackathons",
+      description:
+        "See TechSquad Cameroon's flagship projects, including LaneForge, e-commerce work, CodeConnect, and CAMIHACK 2026.",
+      path: "/projects",
+      image: DEFAULT_OG_IMAGE,
+    }),
+>>>>>>> 4f48a8fcb1c1af9212b616171d3f3bf33de77b11
   component: ProjectsPage,
 });
 

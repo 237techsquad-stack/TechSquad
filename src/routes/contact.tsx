@@ -7,6 +7,7 @@ import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
 import { Plus, Check, Mail, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
+<<<<<<< HEAD
 import { usePreferences } from "@/lib/preferences";
 
 export const Route = createFileRoute("/contact")({
@@ -18,6 +19,19 @@ export const Route = createFileRoute("/contact")({
       { property: "og:description", content: "Send TECHSQUAD Cameroon a project or collaboration message." },
     ],
   }),
+=======
+import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
+
+export const Route = createFileRoute("/contact")({
+  head: () =>
+    buildPageHead({
+      title: "Contact TechSquad Cameroon | start your project or partnership",
+      description:
+        "Reach TechSquad Cameroon for software projects, brand growth, collaboration, and LaneForge partnerships.",
+      path: "/contact",
+      image: DEFAULT_OG_IMAGE,
+    }),
+>>>>>>> 4f48a8fcb1c1af9212b616171d3f3bf33de77b11
   component: ContactPage,
 });
 

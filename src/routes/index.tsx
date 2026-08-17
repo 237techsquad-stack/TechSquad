@@ -6,10 +6,22 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { ParticleCanvas } from "@/components/home/ParticleHero";
 import { CountdownTimer } from "@/components/home/CountdownTimer";
 import { Reveal, Stagger } from "@/components/animations/Reveal";
+<<<<<<< HEAD
 import { usePreferences, useT } from "@/lib/preferences";
 import laneForgeLogo from "../../images/Laneforge-transparent.png";
+=======
+import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
+>>>>>>> 4f48a8fcb1c1af9212b616171d3f3bf33de77b11
 
 export const Route = createFileRoute("/")({
+  head: () =>
+    buildPageHead({
+      title: "TechSquad - African software, learning, and LaneForge",
+      description:
+        "TechSquad Cameroon builds software solutions, digital skills, and the LaneForge career platform for students and young professionals.",
+      path: "/",
+      image: DEFAULT_OG_IMAGE,
+    }),
   component: Index,
 });
 

@@ -4,6 +4,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
 import { Github, Linkedin } from "lucide-react";
+<<<<<<< HEAD
 import { usePreferences } from "@/lib/preferences";
 import groupPhoto from "../../images/group photo.png";
 import celinePhoto from "../../images/Professional pictures_/Celine.png";
@@ -26,6 +27,19 @@ export const Route = createFileRoute("/members")({
       { property: "og:description", content: "Meet the members of TECHSQUAD Cameroon." },
     ],
   }),
+=======
+import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
+
+export const Route = createFileRoute("/members")({
+  head: () =>
+    buildPageHead({
+      title: "Team - TechSquad Cameroon | builders, designers, and growth leads",
+      description:
+        "Meet the TechSquad Cameroon team: software developers, designers, and growth leads building practical digital products.",
+      path: "/members",
+      image: DEFAULT_OG_IMAGE,
+    }),
+>>>>>>> 4f48a8fcb1c1af9212b616171d3f3bf33de77b11
   component: MembersPage,
 });
 
