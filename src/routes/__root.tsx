@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { PreferencesProvider } from "@/lib/preferences";
 
 import appCss from "../styles.css?url";
 
@@ -71,17 +72,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "TechSquad - Empowering Africa's Digital Future" },
+      { title: "TECHSQUAD - Empowering Africa's Digital Future" },
       {
         name: "description",
         content:
-          "TechSquad Cameroon builds software infrastructure, trains young digital talent, and prepares LaneForge for students and youths.",
+          "TECHSQUAD Cameroon builds software infrastructure, trains young digital talent, and prepares LaneForge for students and youths.",
       },
-      { name: "author", content: "TechSquad Cameroon" },
-      { property: "og:title", content: "TechSquad - Empowering Africa's Digital Future" },
+      { name: "author", content: "TECHSQUAD Cameroon" },
+      { property: "og:title", content: "TECHSQUAD - Empowering Africa's Digital Future" },
       {
         property: "og:description",
-        content: "Software solutions, digital skills, brand growth, and LaneForge from TechSquad Cameroon.",
+        content: "Software solutions, digital skills, brand growth, and LaneForge from TECHSQUAD Cameroon.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -122,7 +123,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <PreferencesProvider>
+        <Outlet />
+      </PreferencesProvider>
     </QueryClientProvider>
   );
 }

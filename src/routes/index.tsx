@@ -6,6 +6,8 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { ParticleCanvas } from "@/components/home/ParticleHero";
 import { CountdownTimer } from "@/components/home/CountdownTimer";
 import { Reveal, Stagger } from "@/components/animations/Reveal";
+import { usePreferences, useT } from "@/lib/preferences";
+import laneForgeLogo from "../../images/Laneforge-transparent.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -31,7 +33,7 @@ const services = [
   },
   {
     title: "Brand growth and digital content",
-    body: "TechSquad helps projects look credible, communicate clearly, and reach the people they were built for.",
+    body: "TECHSQUAD helps projects look credible, communicate clearly, and reach the people they were built for.",
     bullets: ["Brand identity", "Graphic design", "Social media growth"],
   },
   {
@@ -55,8 +57,86 @@ const terminalLines = [
   "status: building digital futures",
 ];
 
+const homeCopy = {
+  en: {
+    badge: "LaneForge is launching soon",
+    heroLead: "Empowering ",
+    heroFocus: "Africa's digital future.",
+    intro: "TECHSQUAD Cameroon is a student-born tech team building software solutions, strengthening young builders, and preparing LaneForge to guide students toward careers that fit them.",
+    story: "Our story",
+    stats: ["Started at VISHI", "Core members", "Months to LaneForge", "Africa-focused"],
+    marquee: ["Software Engineering", "LaneForge", "Digital Skills", "Brand Growth", "Student Innovation", "Cameroon"],
+    whatWeDo: "What we do",
+    serviceHeading: "We build, train, brand, and launch practical digital solutions.",
+    services,
+    methodLabel: "Our method",
+    methodHeading: "A clear path from idea to working solution.",
+    methodIntro: "Our process is progressive and collaborative: understand the problem, prototype quickly, build with discipline, then learn from real users.",
+    method,
+    comingSoon: "Coming soon",
+    meet: "Meet",
+    laneForgeIntro: "A career-building platform that guides youths and students toward a career that fits them and helps them build actual skills.",
+    notify: "Notify me at launch",
+    learnMore: "Learn more",
+    earlyAccess: "Get early access",
+    userBase: "Building a student user base before launch",
+  },
+  fr: {
+    badge: "LaneForge sera bientot lance",
+    heroLead: "Renforcer ",
+    heroFocus: "l'avenir numerique de l'Afrique.",
+    intro: "TECHSQUAD Cameroon est une equipe tech nee d'etudiants qui construit des solutions logicielles, renforce de jeunes talents et prepare LaneForge pour guider les etudiants vers des carrieres adaptees.",
+    story: "Notre histoire",
+    stats: ["Debut a VISHI", "Membres principaux", "Mois avant LaneForge", "Centre sur l'Afrique"],
+    marquee: ["Genie logiciel", "LaneForge", "Competences numeriques", "Croissance de marque", "Innovation etudiante", "Cameroun"],
+    whatWeDo: "Ce que nous faisons",
+    serviceHeading: "Nous construisons, formons, marquons et lançons des solutions numeriques pratiques.",
+    services: [
+      {
+        title: "Infrastructure logicielle",
+        body: "Nous concevons et construisons des plateformes web, des outils internes et des systemes numeriques pratiques pour aider les gens a travailler plus vite.",
+        bullets: ["Planification produit", "Developpement frontend et backend", "Systemes prets au deploiement"],
+      },
+      {
+        title: "Developpement web et application",
+        body: "Des plateformes pour etudiants aux sites clients, nous transformons les idees en logiciels utilisables avec des interfaces claires.",
+        bullets: ["Sites responsive", "Applications React", "Experiences mobile-first"],
+      },
+      {
+        title: "Croissance de marque et contenu",
+        body: "TECHSQUAD aide les projets a paraitre credibles, communiquer clairement et atteindre les personnes visees.",
+        bullets: ["Identite de marque", "Design graphique", "Croissance sur les reseaux sociaux"],
+      },
+      {
+        title: "Formation et collaboration",
+        body: "Nous construisons une culture d'equipe ou les jeunes builders apprennent en livrant de vraies solutions ensemble.",
+        bullets: ["Mentorat", "Projets d'equipe", "Preparation aux hackathons"],
+      },
+    ],
+    methodLabel: "Notre methode",
+    methodHeading: "Un chemin clair de l'idee a la solution fonctionnelle.",
+    methodIntro: "Notre processus est progressif et collaboratif: comprendre le probleme, prototyper vite, construire avec discipline, puis apprendre des vrais utilisateurs.",
+    method: [
+      { step: "01", title: "Ecouter", body: "Nous commencons par le vrai probleme, les personnes concernees et leur contexte." },
+      { step: "02", title: "Prototyper", body: "Les idees deviennent rapidement des ecrans, des parcours et des tests techniques." },
+      { step: "03", title: "Construire", body: "Designers, developpeurs et leads croissance travaillent ensemble jusqu'a une solution utilisable." },
+      { step: "04", title: "Lancer et apprendre", body: "Nous publions, collectons les retours et continuons d'ameliorer l'impact." },
+    ],
+    comingSoon: "Bientot disponible",
+    meet: "Decouvrez",
+    laneForgeIntro: "Une plateforme de carriere qui guide les jeunes et les etudiants vers une voie adaptee et les aide a developper de vraies competences.",
+    notify: "Me prevenir au lancement",
+    learnMore: "En savoir plus",
+    earlyAccess: "Acces anticipe",
+    userBase: "Construction d'une base d'utilisateurs etudiants avant le lancement",
+  },
+} as const;
+
 function Index() {
   const [openService, setOpenService] = useState(0);
+  const { language } = usePreferences();
+  const t = useT();
+  const text = homeCopy[language];
 
   return (
     <SiteLayout>
@@ -65,7 +145,7 @@ function Index() {
           <ParticleCanvas />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/55 to-background" />
         </div>
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 pt-16 pb-24 sm:pt-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 pt-16 pb-44 sm:pt-24 sm:pb-52 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -77,7 +157,7 @@ function Index() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-pink" />
               </span>
-              LaneForge is launching soon
+              {text.badge}
             </motion.div>
 
             <motion.h1
@@ -86,9 +166,9 @@ function Index() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-normal sm:text-7xl md:text-[84px]"
             >
-              <span className="text-[#071733]">Empowering </span>
+              <span className="text-[#071733]">{text.heroLead}</span>
               <span className="text-gradient-hero">
-                <ScrambleText text="Africa's digital future." />
+                <ScrambleText text={text.heroFocus} />
               </span>
             </motion.h1>
 
@@ -98,8 +178,7 @@ function Index() {
               transition={{ duration: 0.9, delay: 0.15 }}
               className="mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl"
             >
-              TechSquad Cameroon is a student-born tech team building software solutions,
-              strengthening young builders, and preparing LaneForge to guide students toward careers that fit them.
+              {text.intro}
             </motion.p>
 
             <motion.div
@@ -112,7 +191,7 @@ function Index() {
                 to="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-primary px-7 py-4 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:scale-[1.03]"
               >
-                <span>Start a project</span>
+                <span>{t("startProject")}</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 <span className="pointer-events-none absolute inset-0 animate-shimmer" />
               </Link>
@@ -120,7 +199,7 @@ function Index() {
                 to="/about"
                 className="group inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-6 py-4 text-sm font-semibold text-foreground backdrop-blur transition-all hover:border-pink hover:text-pink"
               >
-                Our story
+                {text.story}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>
@@ -129,24 +208,24 @@ function Index() {
           <TerminalPanel />
         </div>
 
-        <div className="pointer-events-none absolute bottom-6 left-1/2 hidden h-14 w-px -translate-x-1/2 overflow-hidden rounded-full bg-border sm:block">
+        <div className="pointer-events-none absolute bottom-16 left-1/2 hidden h-14 w-px -translate-x-1/2 overflow-hidden rounded-full bg-border sm:block">
           <span className="block h-6 w-px animate-scroll-cue bg-pink" />
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-24">
+      <section className="relative z-10 mx-auto -mt-40 max-w-7xl px-4 pb-24 sm:-mt-52">
         <Stagger className="grid grid-cols-2 sm:grid-cols-4" stagger={0.08}>
-          {stats.map((stat) => (
+          {stats.map((stat, index) => (
             <motion.div
-              key={stat.label}
+              key={text.stats[index]}
               variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
               className="border-border px-4 py-4 text-center sm:border-l sm:first:border-l-0"
             >
               <div className="text-4xl font-black text-gradient-hero sm:text-5xl">
-                <AnimatedCounter value={stat.value} suffix={stat.label.includes("Africa") ? "%" : ""} />
+                <AnimatedCounter value={stat.value} suffix={index === 3 ? "%" : ""} />
               </div>
               <div className="mt-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                {stat.label}
+                {text.stats[index]}
               </div>
             </motion.div>
           ))}
@@ -157,12 +236,7 @@ function Index() {
         <div className="marquee-track flex gap-8 whitespace-nowrap text-sm font-semibold uppercase tracking-[0.25em] text-cyan-100">
           {Array.from({ length: 2 }).map((_, group) => (
             <span key={group} className="flex gap-8">
-              <span>Software Engineering</span>
-              <span>LaneForge</span>
-              <span>Digital Skills</span>
-              <span>Brand Growth</span>
-              <span>Student Innovation</span>
-              <span>Cameroon</span>
+              {text.marquee.map((item) => <span key={item}>{item}</span>)}
             </span>
           ))}
         </div>
@@ -171,14 +245,14 @@ function Index() {
       <section className="relative bg-[#071733] py-24 text-white">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#35b7ff]">What we do</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#35b7ff]">{text.whatWeDo}</p>
             <h2 className="mt-3 text-4xl font-bold tracking-normal text-cyan-100 sm:text-5xl">
-              <ScrambleText text="We build, train, brand, and launch practical digital solutions." />
+              <ScrambleText text={text.serviceHeading} />
             </h2>
           </Reveal>
 
           <div className="space-y-3">
-            {services.map((service, index) => {
+            {text.services.map((service, index) => {
               const isOpen = openService === index;
               return (
                 <motion.div
@@ -231,21 +305,20 @@ function Index() {
 
       <section className="mx-auto grid max-w-7xl gap-12 px-4 py-24 lg:grid-cols-[0.85fr_1.15fr]">
         <Reveal>
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Our method</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">{text.methodLabel}</p>
           <h2 className="mt-3 text-4xl font-bold tracking-normal sm:text-5xl">
             <span className="text-gradient-hero">
-              <ScrambleText text="A clear path from idea to working solution." />
+              <ScrambleText text={text.methodHeading} />
             </span>
           </h2>
           <p className="mt-5 text-muted-foreground">
-            Our process is progressive and collaborative: understand the problem, prototype quickly,
-            build with discipline, then learn from real users.
+            {text.methodIntro}
           </p>
         </Reveal>
 
         <div className="relative space-y-8">
           <div className="absolute left-5 top-5 bottom-5 w-px bg-gradient-to-b from-primary via-pink to-gold" />
-          {method.map((item, index) => (
+          {text.method.map((item, index) => (
             <motion.div
               key={item.step}
               initial={{ opacity: 0, x: 24 }}
@@ -265,50 +338,58 @@ function Index() {
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-24">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-primary via-primary-glow to-pink p-1 shadow-elegant">
-          <div className="relative overflow-hidden rounded-[calc(2.5rem-4px)] bg-[#071733] p-8 sm:p-14">
+        <div className="relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white p-1 shadow-glass">
+          <div className="relative overflow-hidden rounded-[calc(1.75rem-4px)] bg-[#08172b] p-8 sm:p-14">
             <div className="pointer-events-none absolute inset-0">
-              <div className="absolute -top-32 -right-20 h-80 w-80 rounded-full bg-pink/40 blur-3xl animate-blob" />
-              <div className="absolute -bottom-24 -left-20 h-80 w-80 rounded-full bg-gold/40 blur-3xl animate-blob [animation-delay:-6s]" />
+              <div className="absolute -top-32 -right-24 h-72 w-72 rounded-full bg-[#1d4f7a]/20 blur-3xl" />
+              <div className="absolute -bottom-28 -left-24 h-72 w-72 rounded-full bg-[#c5a64f]/12 blur-3xl" />
               <div
-                className="absolute inset-0 opacity-20"
+                className="absolute inset-0 opacity-[0.06]"
                 style={{
                   backgroundImage:
                     "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-                  backgroundSize: "56px 56px",
-                  maskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+                  backgroundSize: "64px 64px",
+                  maskImage: "radial-gradient(ellipse at center, black 18%, transparent 72%)",
                 }}
               />
             </div>
 
             <div className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-pink/50 bg-pink/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pink-glow">
-                  <Zap className="h-3.5 w-3.5" /> Coming soon
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100">
+                  <Zap className="h-3.5 w-3.5" /> {text.comingSoon}
                 </div>
-                <h2 className="mt-5 text-5xl font-bold leading-[1.05] tracking-normal text-white sm:text-6xl">
-                  Meet{" "}
-                  <span className="text-gradient-gold">
-                    <ScrambleText text="LaneForge" />
-                  </span>
-                </h2>
+                <div className="relative mt-5">
+                  <div className="absolute right-0 top-0 w-[220px] sm:w-[280px] lg:w-[360px]">
+                    <img
+                      src={laneForgeLogo}
+                      alt="LaneForge logo"
+                      className="h-20 w-full object-contain sm:h-24 lg:h-28"
+                    />
+                  </div>
+                  <h2 className="max-w-[calc(100%-235px)] pr-3 text-5xl font-bold leading-[1.05] tracking-normal text-white sm:max-w-[calc(100%-300px)] sm:pr-6 sm:text-6xl">
+                    {text.meet}{" "}
+                    <span className="text-[#d7bd66]">
+                      <ScrambleText text="LaneForge" />
+                    </span>
+                  </h2>
+                </div>
                 <p className="mt-5 max-w-lg text-lg text-white/70">
-                  A career-building platform that guides youths and students toward a career that fits them
-                  and helps them build actual skills.
+                  {text.laneForgeIntro}
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
                     href="#waitlist"
-                    className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-gold px-6 py-3 text-sm font-bold text-[#071733] shadow-gold transition-transform hover:scale-105"
+                    className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#d7bd66] px-6 py-3 text-sm font-bold text-[#071733] shadow-gold transition-colors hover:bg-[#e0c878]"
                   >
                     <Bell className="h-4 w-4" />
-                    Notify me at launch
+                    {text.notify}
                   </a>
                   <a
                     href="#waitlist"
                     className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:border-white/60"
                   >
-                    Learn more <ArrowRight className="h-4 w-4" />
+                    {text.learnMore} <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
               </div>
@@ -325,13 +406,13 @@ function Index() {
                     placeholder="you@email.com"
                     className="min-w-0 flex-1 rounded-xl bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/50 focus:outline-none"
                   />
-                  <button className="rounded-xl bg-gradient-pink px-5 py-3 text-sm font-bold text-white shadow-pink transition-transform hover:scale-105">
-                    Get early access
+                  <button className="rounded-xl bg-[#2f74a8] px-5 py-3 text-sm font-bold text-white shadow-pink transition-colors hover:bg-[#3986bd]">
+                    {text.earlyAccess}
                   </button>
                 </form>
                 <div className="mt-4 flex items-center gap-2 text-xs text-white/60">
                   <Users className="h-3.5 w-3.5" />
-                  Building a student user base before launch
+                  {text.userBase}
                 </div>
               </div>
             </div>
@@ -406,7 +487,7 @@ function TerminalPanel() {
         <span className="h-3 w-3 rounded-full bg-pink" />
         <span className="h-3 w-3 rounded-full bg-gold" />
         <span className="h-3 w-3 rounded-full bg-[#35b7ff]" />
-        <span className="ml-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">TechSquad terminal</span>
+        <span className="ml-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">TECHSQUAD terminal</span>
       </div>
       <div className="space-y-3 pt-5 font-mono text-xs sm:text-sm">
         {terminalLines.map((line, index) => (

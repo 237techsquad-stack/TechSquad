@@ -22,7 +22,8 @@ export function ParticleCanvas() {
     let raf = 0;
     let lastFrame = 0;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const isSmallScreen = window.matchMedia("(max-width: 640px)").matches;
+    const dpr = Math.min(window.devicePixelRatio || 1, isSmallScreen ? 1.15 : 1.5);
     let width = 0;
     let height = 0;
     let particles: Particle[] = [];
@@ -34,7 +35,9 @@ export function ParticleCanvas() {
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(48, Math.floor((width * height) / 26000));
+      const density = isSmallScreen ? 42000 : 26000;
+      const maxParticles = isSmallScreen ? 28 : 48;
+      const count = Math.min(maxParticles, Math.floor((width * height) / density));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -58,7 +61,7 @@ export function ParticleCanvas() {
     const step = () => {
       raf = requestAnimationFrame(step);
       const now = performance.now();
-      if (now - lastFrame < 33) return;
+      if (now - lastFrame < (isSmallScreen ? 42 : 33)) return;
       lastFrame = now;
 
       ctx.clearRect(0, 0, width, height);

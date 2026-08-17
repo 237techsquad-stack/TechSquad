@@ -51,6 +51,10 @@
   --color-gold-deep: var(--gold-deep);
   --color-pink: var(--pink);
   --color-pink-glow: var(--pink-glow);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-sky: var(--brand-sky);
+  --color-brand-steel: var(--brand-steel);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -74,32 +78,36 @@
   --card-foreground: oklch(0.16 0.03 260);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.16 0.03 260);
-  --primary: oklch(0.55 0.24 260);
+  --primary: oklch(0.44 0.12 239);
   --primary-foreground: oklch(0.99 0 0);
-  --primary-glow: oklch(0.68 0.22 258);
-  --secondary: oklch(0.82 0.16 88);
+  --primary-glow: oklch(0.62 0.13 231);
+  --secondary: oklch(0.74 0.04 244);
   --secondary-foreground: oklch(0.2 0.04 260);
-  --gold: oklch(0.82 0.16 88);
-  --gold-deep: oklch(0.72 0.17 80);
-  --pink: oklch(0.72 0.28 350);
-  --pink-glow: oklch(0.78 0.3 350);
+  --gold: oklch(0.72 0.1 78);
+  --gold-deep: oklch(0.55 0.09 74);
+  --pink: oklch(0.61 0.13 225);
+  --pink-glow: oklch(0.7 0.14 223);
+  --brand-blue: oklch(0.44 0.12 239);
+  --brand-navy: oklch(0.25 0.08 257);
+  --brand-sky: oklch(0.67 0.15 229);
+  --brand-steel: oklch(0.63 0.02 245);
   --muted: oklch(0.96 0.01 260);
   --muted-foreground: oklch(0.5 0.03 260);
-  --accent: oklch(0.72 0.28 350);
+  --accent: oklch(0.67 0.15 229);
   --accent-foreground: oklch(0.99 0 0);
   --destructive: oklch(0.62 0.24 27);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.92 0.01 260);
   --input: oklch(0.94 0.01 260);
   --ring: oklch(0.55 0.24 260);
-  --gradient-hero: linear-gradient(135deg, oklch(0.55 0.24 260) 0%, oklch(0.72 0.28 350) 55%, oklch(0.82 0.16 88) 100%);
-  --gradient-primary: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.68 0.22 258));
-  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.16 88), oklch(0.72 0.17 80));
-  --gradient-pink: linear-gradient(135deg, oklch(0.72 0.28 350), oklch(0.78 0.3 350));
-  --shadow-elegant: 0 20px 60px -20px color-mix(in oklab, oklch(0.55 0.24 260) 35%, transparent);
-  --shadow-gold: 0 20px 60px -20px color-mix(in oklab, oklch(0.82 0.16 88) 55%, transparent);
-  --shadow-pink: 0 20px 60px -20px color-mix(in oklab, oklch(0.72 0.28 350) 45%, transparent);
-  --shadow-glass: 0 8px 32px -8px color-mix(in oklab, oklch(0.55 0.24 260) 20%, transparent);
+  --gradient-hero: linear-gradient(135deg, oklch(0.25 0.08 257) 0%, oklch(0.44 0.12 239) 62%, oklch(0.67 0.15 229) 100%);
+  --gradient-primary: linear-gradient(135deg, oklch(0.25 0.08 257), oklch(0.44 0.12 239));
+  --gradient-gold: linear-gradient(135deg, oklch(0.72 0.1 78), oklch(0.55 0.09 74));
+  --gradient-pink: linear-gradient(135deg, oklch(0.44 0.12 239), oklch(0.67 0.15 229));
+  --shadow-elegant: 0 18px 45px -24px color-mix(in oklab, oklch(0.25 0.08 257) 45%, transparent);
+  --shadow-gold: 0 18px 42px -26px color-mix(in oklab, oklch(0.7 0.1 86) 45%, transparent);
+  --shadow-pink: 0 18px 42px -26px color-mix(in oklab, oklch(0.44 0.12 239) 35%, transparent);
+  --shadow-glass: 0 8px 32px -8px color-mix(in oklab, oklch(0.44 0.12 239) 20%, transparent);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -160,6 +168,32 @@
     color: var(--color-foreground);
     font-family: 'Space Grotesk', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+  }
+  .large-text body {
+    font-size: 112.5%;
+  }
+  .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-color-mode="contrast"] body {
+    background: white;
+    color: oklch(0.12 0.02 250);
+  }
+  [data-color-mode="contrast"] a,
+  [data-color-mode="contrast"] button {
+    outline-color: oklch(0.44 0.12 239);
+  }
+  [data-color-mode="deuteranopia"] body {
+    filter: saturate(0.82) hue-rotate(-12deg);
+  }
+  [data-color-mode="protanopia"] body {
+    filter: saturate(0.8) hue-rotate(14deg);
+  }
+  [data-color-mode="tritanopia"] body {
+    filter: saturate(0.85) hue-rotate(38deg);
   }
   @media (pointer: fine) {
     body, a, button {

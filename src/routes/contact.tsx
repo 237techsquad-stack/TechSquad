@@ -7,14 +7,15 @@ import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
 import { Plus, Check, Mail, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { usePreferences } from "@/lib/preferences";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact - TechSquad" },
-      { name: "description", content: "Contact TechSquad Cameroon for software, web, brand growth, and LaneForge collaboration." },
-      { property: "og:title", content: "Contact - TechSquad" },
-      { property: "og:description", content: "Send TechSquad Cameroon a project or collaboration message." },
+      { title: "Contact - TECHSQUAD" },
+      { name: "description", content: "Contact TECHSQUAD Cameroon for software, web, brand growth, and LaneForge collaboration." },
+      { property: "og:title", content: "Contact - TECHSQUAD" },
+      { property: "og:description", content: "Send TECHSQUAD Cameroon a project or collaboration message." },
     ],
   }),
   component: ContactPage,
@@ -23,11 +24,63 @@ export const Route = createFileRoute("/contact")({
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdarqjge";
 
 const faqs = [
-  { q: "What does TechSquad build?", a: "We build practical software solutions, web platforms, brand systems, and student-focused digital products like LaneForge." },
-  { q: "Can I contact TechSquad for a client project?", a: "Yes. The team is already providing services to clients while preparing LaneForge for launch." },
+  { q: "What does TECHSQUAD build?", a: "We build practical software solutions, web platforms, brand systems, and student-focused digital products like LaneForge." },
+  { q: "Can I contact TECHSQUAD for a client project?", a: "Yes. The team is already providing services to clients while preparing LaneForge for launch." },
   { q: "What is LaneForge?", a: "LaneForge is a career-building platform that guides youths and students toward careers that fit them and helps them build real skills." },
-  { q: "Where is TechSquad based?", a: "TechSquad Cameroon started as a student initiative at VISHI Higher Institute and is focused on Africa's digital future." },
+  { q: "Where is TECHSQUAD based?", a: "TECHSQUAD Cameroon started as a student initiative at VISHI Higher Institute and is focused on Africa's digital future." },
 ];
+
+const contactCopy = {
+  en: {
+    kicker: "Contact",
+    title: "Let us build something",
+    focus: "useful together.",
+    intro: "Send a project, partnership, or LaneForge message. The form is connected to Formspree.",
+    faqLabel: "FAQ",
+    faqTitle: "Before you write",
+    faqs,
+    location: "Location",
+    messageReceived: "Message received",
+    thanks: "Thanks",
+    reply: "TECHSQUAD will reply as soon as possible.",
+    another: "Send another message",
+    name: "Your name",
+    email: "Email",
+    subject: "Subject",
+    details: "Project details",
+    sending: "Sending...",
+    send: "Send message",
+    helper: "Submissions go through Formspree endpoint mdarqjge.",
+    serverError: "Message could not be sent. Please try again in a moment.",
+  },
+  fr: {
+    kicker: "Contact",
+    title: "Construisons quelque chose",
+    focus: "d'utile ensemble.",
+    intro: "Envoyez un message pour un projet, un partenariat ou LaneForge. Le formulaire est connecte a Formspree.",
+    faqLabel: "FAQ",
+    faqTitle: "Avant d'ecrire",
+    faqs: [
+      { q: "Que construit TECHSQUAD?", a: "Nous construisons des solutions logicielles pratiques, des plateformes web, des systemes de marque et des produits numeriques pour etudiants comme LaneForge." },
+      { q: "Puis-je contacter TECHSQUAD pour un projet client?", a: "Oui. L'equipe fournit deja des services clients pendant la preparation du lancement de LaneForge." },
+      { q: "Qu'est-ce que LaneForge?", a: "LaneForge est une plateforme de carriere qui guide les jeunes et les etudiants vers des carrieres adaptees et de vraies competences." },
+      { q: "Ou est base TECHSQUAD?", a: "TECHSQUAD Cameroon a commence comme initiative etudiante a VISHI Higher Institute et se concentre sur l'avenir numerique de l'Afrique." },
+    ],
+    location: "Localisation",
+    messageReceived: "Message recu",
+    thanks: "Merci",
+    reply: "TECHSQUAD repondra des que possible.",
+    another: "Envoyer un autre message",
+    name: "Votre nom",
+    email: "Email",
+    subject: "Sujet",
+    details: "Details du projet",
+    sending: "Envoi...",
+    send: "Envoyer le message",
+    helper: "Les soumissions passent par le endpoint Formspree mdarqjge.",
+    serverError: "Le message n'a pas pu etre envoye. Veuillez reessayer dans un moment.",
+  },
+} as const;
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(80),
@@ -38,6 +91,8 @@ const schema = z.object({
 });
 
 function ContactPage() {
+  const { language } = usePreferences();
+  const text = contactCopy[language];
   const [open, setOpen] = useState<number | null>(0);
   const [form, setForm] = useState({ name: "", email: "", subject: "", details: "", company: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -74,7 +129,7 @@ function ContactPage() {
       if (!response.ok) throw new Error("Formspree rejected the message");
       setSent(true);
     } catch {
-      setServerError("Message could not be sent. Please try again in a moment.");
+      setServerError(text.serverError);
     } finally {
       setSubmitting(false);
     }
@@ -84,33 +139,33 @@ function ContactPage() {
     <SiteLayout>
       <section className="relative isolate">
         <AmbientBackground />
-        <div className="mx-auto max-w-5xl px-4 py-24 text-center">
+        <div className="mx-auto max-w-5xl px-4 pt-24 pb-36 text-center sm:pb-44">
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-pink">Contact</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-blue">{text.kicker}</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="mt-4 text-5xl font-bold leading-[1.05] tracking-normal sm:text-7xl">
-              Let us build something <span className="text-gradient-hero"><ScrambleText text="useful together." /></span>
+              {text.title} <span className="text-gradient-hero"><ScrambleText text={text.focus} /></span>
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Send a project, partnership, or LaneForge message. The form is connected to Formspree.
+              {text.intro}
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 pb-24 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 pt-20 pb-24 sm:pt-24 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
         <div className="order-2 relative overflow-hidden rounded-[2rem] bg-[#071733] p-6 text-white shadow-elegant sm:p-8 lg:order-1">
           <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-pink/25 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-28 -left-20 h-56 w-56 rounded-full bg-[#35b7ff]/25 blur-3xl" />
           <Reveal className="relative">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#35b7ff]">FAQ</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-normal sm:text-4xl"><ScrambleText text="Before you write" /></h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#35b7ff]">{text.faqLabel}</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-normal sm:text-4xl"><ScrambleText text={text.faqTitle} /></h2>
           </Reveal>
           <Stagger className="relative mt-8 space-y-2" stagger={0.06}>
-            {faqs.map((f, i) => {
+            {text.faqs.map((f, i) => {
               const isOpen = open === i;
               return (
                 <motion.div
@@ -151,13 +206,13 @@ function ContactPage() {
               <Mail className="mt-0.5 h-4 w-4 text-[#35b7ff]" />
               <div>
                 <div className="text-xs text-white/50">Email</div>
-                <div className="text-sm font-semibold">237techsquad@gmail.com</div>
+                <div className="text-sm font-semibold">techsquadcameroon@gmail.com</div>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-4 w-4 text-[#35b7ff]" />
               <div>
-                <div className="text-xs text-white/50">Location</div>
+                <div className="text-xs text-white/50">{text.location}</div>
                 <div className="text-sm font-semibold">Cameroon</div>
               </div>
             </div>
@@ -184,9 +239,9 @@ function ContactPage() {
                   >
                     <Check className="h-9 w-9" />
                   </motion.span>
-                  <h3 className="mt-8 text-2xl font-bold">Message received</h3>
+                  <h3 className="mt-8 text-2xl font-bold">{text.messageReceived}</h3>
                   <p className="mt-2 max-w-sm text-muted-foreground">
-                    Thanks {form.name.split(" ")[0]}. TechSquad will reply as soon as possible.
+                    {text.thanks} {form.name.split(" ")[0]}. {text.reply}
                   </p>
                   <button
                     onClick={() => {
@@ -195,17 +250,17 @@ function ContactPage() {
                     }}
                     className="mt-8 text-sm font-semibold text-pink hover:underline"
                   >
-                    Send another message
+                    {text.another}
                   </button>
                 </motion.div>
               ) : (
                 <motion.form key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={onSubmit} noValidate className="space-y-5">
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <FloatField label="Your name" name="name" value={form.name} onChange={(v) => setForm({ ...form, name: v })} error={errors.name} />
-                    <FloatField label="Email" name="email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} error={errors.email} />
+                    <FloatField label={text.name} name="name" value={form.name} onChange={(v) => setForm({ ...form, name: v })} error={errors.name} />
+                    <FloatField label={text.email} name="email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} error={errors.email} />
                   </div>
-                  <FloatField label="Subject" name="subject" value={form.subject} onChange={(v) => setForm({ ...form, subject: v })} error={errors.subject} />
-                  <FloatField label="Project details" name="details" textarea value={form.details} onChange={(v) => setForm({ ...form, details: v })} error={errors.details} />
+                  <FloatField label={text.subject} name="subject" value={form.subject} onChange={(v) => setForm({ ...form, subject: v })} error={errors.subject} />
+                  <FloatField label={text.details} name="details" textarea value={form.details} onChange={(v) => setForm({ ...form, details: v })} error={errors.details} />
                   <input
                     tabIndex={-1}
                     autoComplete="off"
@@ -221,11 +276,11 @@ function ContactPage() {
                     disabled={submitting}
                     className="group relative w-full overflow-hidden rounded-full bg-gradient-primary py-4 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    {submitting ? "Sending..." : "Send message"}
+                    {submitting ? text.sending : text.send}
                     <span className="pointer-events-none absolute inset-0 animate-shimmer" />
                   </button>
                   <p className="text-center text-xs text-muted-foreground">
-                    Submissions go through Formspree endpoint mdarqjge.
+                    {text.helper}
                   </p>
                 </motion.form>
               )}

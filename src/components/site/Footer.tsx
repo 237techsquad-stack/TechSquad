@@ -1,12 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Linkedin, Twitter, Instagram, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Facebook, Linkedin, Mail } from "lucide-react";
 import { BrandLogo } from "./BrandLogo";
 
 const socials = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+  { icon: Mail, href: "mailto:techsquadcameroon@gmail.com", label: "Gmail" },
+  { icon: Facebook, href: "https://www.facebook.com/techsquadcameroon?mibextid=ZbWKwL", label: "Facebook" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/techsquadcm/", label: "LinkedIn" },
 ];
 
 export function Footer() {
@@ -17,7 +16,7 @@ export function Footer() {
         <div className="md:col-span-2">
           <BrandLogo />
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-            TechSquad Cameroon empowers Africa's digital future by building software infrastructure,
+            TECHSQUAD Cameroon empowers Africa's digital future by building software infrastructure,
             training young talent, and launching practical solutions like LaneForge.
           </p>
           <div className="mt-6 flex items-center gap-2">
@@ -57,7 +56,8 @@ export function Footer() {
         <div>
           <h4 className="text-sm font-semibold text-foreground">Contact</h4>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            <li>237techsquad@gmail.com</li>
+            <li>techsquadcameroon@gmail.com</li>
+            <li>WhatsApp: 670344034</li>
             <li>Cameroon</li>
             <li>VISHI Higher Institute roots</li>
           </ul>
@@ -71,7 +71,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border/60">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-xs text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} TechSquad Cameroon. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} TECHSQUAD Cameroon. All rights reserved.</p>
           <p>Empowering Africa's digital future.</p>
         </div>
       </div>
