@@ -91,12 +91,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "keywords", content: "techsquad cameroon, web development douala, it support cameroon" },
       { name: "google-site-verification", content: "JAQ8WyXDfk7Vos5g0KZsTlImFXyJ5ePYnIxMlbVU7u4" },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "TechSquad Cameroon | IT Services, Web Dev & Tech Training in Douala" },
-      {
-        property: "og:description",
-        content:
-          "TechSquad Cameroon is a tech company in Douala offering web development, IT support, software solutions, and tech training.",
-      },
+      { property: "og:title", content: "TechSquad Cameroon | IT Services in Douala" },
+      { property: "og:description", content: "Web Development, IT Support, and Tech Training in Cameroon" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: SITE_NAME },
       { property: "og:url", content: "https://techsquad-cameroon.netlify.app/" },
