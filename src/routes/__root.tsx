@@ -16,7 +16,6 @@ import {
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
   DEFAULT_TITLE,
-  DEFAULT_KEYWORDS,
   SITE_NAME,
   SITE_URL,
   TWITTER_HANDLE,
@@ -82,16 +81,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: DEFAULT_TITLE },
-      { name: "description", content: DEFAULT_DESCRIPTION },
+      { title: "TechSquad Cameroon | IT Services, Web Dev & Tech Training in Douala" },
+      {
+        name: "description",
+        content:
+          "TechSquad Cameroon is a tech company in Douala offering web development, IT support, software solutions, and tech training.",
+      },
       { name: "author", content: SITE_NAME },
-      { name: "keywords", content: DEFAULT_KEYWORDS },
+      { name: "keywords", content: "techsquad cameroon, web development douala, it support cameroon" },
+      { name: "google-site-verification", content: "JAQ8WyXDfk7Vos5g0KZsTlImFXyJ5ePYnIxMlbVU7u4" },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: DEFAULT_TITLE },
-      { property: "og:description", content: DEFAULT_DESCRIPTION },
+      { property: "og:title", content: "TechSquad Cameroon | IT Services, Web Dev & Tech Training in Douala" },
+      {
+        property: "og:description",
+        content:
+          "TechSquad Cameroon is a tech company in Douala offering web development, IT support, software solutions, and tech training.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: SITE_NAME },
-      { property: "og:url", content: SITE_URL },
+      { property: "og:url", content: "https://techsquad-cameroon.netlify.app/" },
       { property: "og:image", content: DEFAULT_OG_IMAGE },
       { property: "og:image:alt", content: "TechSquad brand preview image" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -105,7 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-      { rel: "canonical", href: SITE_URL },
+      { rel: "canonical", href: "https://techsquad-cameroon.netlify.app/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
