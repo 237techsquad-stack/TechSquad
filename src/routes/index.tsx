@@ -11,14 +11,23 @@ import laneForgeLogo from "../../images/Laneforge-transparent.png";
 import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () =>
-    buildPageHead({
+  head: () => {
+    const pageHead = buildPageHead({
       title: "TechSquad - African software, learning, and LaneForge",
       description:
         "TechSquad Cameroon builds software solutions, digital skills, and the LaneForge career platform for students and young professionals.",
       path: "/",
       image: DEFAULT_OG_IMAGE,
-    }),
+    });
+
+    return {
+      ...pageHead,
+      meta: [
+        ...pageHead.meta,
+        { name: "google-site-verification", content: "JAQ8WyXDfk7Vos5g0KZsTlImFXyJ5ePYnIxMlbVU7u4" },
+      ],
+    };
+  },
   component: Index,
 });
 
