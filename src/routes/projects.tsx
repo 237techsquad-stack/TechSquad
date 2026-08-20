@@ -3,24 +3,12 @@ import { motion } from "framer-motion";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
-<<<<<<< HEAD
 import { ExternalLink, Github } from "lucide-react";
 import { usePreferences } from "@/lib/preferences";
 import ecommercePhoto from "../../images/Ecommerce Website.jpg";
 import hotelPhoto from "../../images/Hotel Management System.jpg";
 import pharmacyPhoto from "../../images/Phamarcy management system.jpg";
 import portfolioPhoto from "../../images/Portfolio Website.jpg";
-
-export const Route = createFileRoute("/projects")({
-  head: () => ({
-    meta: [
-      { title: "Projects - TECHSQUAD" },
-      { name: "description", content: "TECHSQUAD Cameroon projects, including LaneForge, client services, CodeConnect, and CAMIHACK 2026." },
-      { property: "og:title", content: "Projects - TECHSQUAD" },
-      { property: "og:description", content: "A selection of TECHSQUAD Cameroon initiatives and builds." },
-    ],
-  }),
-=======
 import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/projects")({
@@ -32,7 +20,6 @@ export const Route = createFileRoute("/projects")({
       path: "/projects",
       image: DEFAULT_OG_IMAGE,
     }),
->>>>>>> 4f48a8fcb1c1af9212b616171d3f3bf33de77b11
   component: ProjectsPage,
 });
 

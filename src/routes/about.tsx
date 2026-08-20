@@ -3,25 +3,12 @@ import { motion } from "framer-motion";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
-<<<<<<< HEAD
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { BookOpen, Camera, Compass, MapPin, Rocket, ShieldCheck, Users } from "lucide-react";
 import { usePreferences } from "@/lib/preferences";
 import codeconnectPhoto from "../../images/Team at codeconnect 2025.png";
 import teamMeetingPhoto from "../../images/team meeting.png";
 import vishiCampusImage from "../../images/vishi.jpeg";
-
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About - TECHSQUAD" },
-      { name: "description", content: "The story of TECHSQUAD Cameroon, from a student initiative at VISHI Higher Institute to LaneForge and client software services." },
-      { property: "og:title", content: "About - TECHSQUAD" },
-      { property: "og:description", content: "How TECHSQUAD Cameroon began and what it is building." },
-    ],
-  }),
-=======
-import { BookOpen, Compass, HeartHandshake, Rocket } from "lucide-react";
 import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
@@ -33,7 +20,6 @@ export const Route = createFileRoute("/about")({
       path: "/about",
       image: DEFAULT_OG_IMAGE,
     }),
->>>>>>> 4f48a8fcb1c1af9212b616171d3f3bf33de77b11
   component: AboutPage,
 });
 

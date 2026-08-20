@@ -4,7 +4,6 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
 import { Reveal, ScrambleText, Stagger } from "@/components/animations/Reveal";
 import { Github, Linkedin } from "lucide-react";
-<<<<<<< HEAD
 import { usePreferences } from "@/lib/preferences";
 import groupPhoto from "../../images/group photo.png";
 import celinePhoto from "../../images/Professional pictures_/Celine.png";
@@ -17,17 +16,6 @@ import preciousPhoto from "../../images/Professional pictures_/Precious.jpg";
 import ramsonPhoto from "../../images/Professional pictures_/Ramson.jpg";
 import meeknessPhoto from "../../images/Professional pictures_/Meekness.jpg";
 import williamsPhoto from "../../images/Professional pictures_/Williams.jpg";
-
-export const Route = createFileRoute("/members")({
-  head: () => ({
-    meta: [
-      { title: "Team - TECHSQUAD" },
-      { name: "description", content: "Meet the builders, designers, growth leads, and software developers at TECHSQUAD Cameroon." },
-      { property: "og:title", content: "Team - TECHSQUAD" },
-      { property: "og:description", content: "Meet the members of TECHSQUAD Cameroon." },
-    ],
-  }),
-=======
 import { buildPageHead, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/members")({
@@ -39,7 +27,6 @@ export const Route = createFileRoute("/members")({
       path: "/members",
       image: DEFAULT_OG_IMAGE,
     }),
->>>>>>> 4f48a8fcb1c1af9212b616171d3f3bf33de77b11
   component: MembersPage,
 });
 
