@@ -222,6 +222,7 @@ function MembersPage() {
             <img
               src={groupPhoto}
               alt="TECHSQUAD group photo"
+              loading="lazy"
               className="h-[340px] w-full object-cover md:h-[480px]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,12,23,0.1),rgba(4,12,23,0.4)_50%,rgba(4,12,23,0.86))]" />
@@ -260,6 +261,7 @@ function MembersPage() {
                   <img
                     src={member.image}
                     alt={`${member.name} professional portrait`}
+                    loading="lazy"
                     className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 ) : (

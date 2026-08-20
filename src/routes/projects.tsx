@@ -180,6 +180,7 @@ function ProjectsPage() {
                   <img
                     src={p.image}
                     alt={`${p.title} project preview`}
+                    loading="lazy"
                     className="h-full w-full object-cover opacity-100 transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                   <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0b1018] to-transparent" />

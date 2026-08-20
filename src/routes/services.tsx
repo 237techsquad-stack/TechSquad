@@ -96,6 +96,21 @@ function ServicesPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-4xl px-4 pb-20">
+        <Reveal>
+          <h2 className="text-3xl font-bold tracking-normal sm:text-4xl">Web development and IT services for Cameroon</h2>
+          <p className="mt-5 text-base leading-8 text-muted-foreground">
+            TechSquad Cameroon provides focused technology services for businesses, schools, community organizations, and founders in Douala and throughout Cameroon. Our web development work includes responsive company websites, e-commerce experiences, dashboards, landing pages, and custom web applications. We design each solution around the people who will use it, so pages load clearly, work on mobile devices, and guide visitors toward useful actions.
+          </p>
+          <p className="mt-4 text-base leading-8 text-muted-foreground">
+            We can also help when the challenge is not a new website. Our team supports software planning, interface improvements, digital content, brand systems, technical documentation, and practical IT decisions. We review the current workflow, identify points of friction, and recommend an implementation that is realistic to maintain. This approach helps Cameroon-based teams avoid unnecessary complexity while still creating a professional digital presence that can grow with the organization.
+          </p>
+          <p className="mt-4 text-base leading-8 text-muted-foreground">
+            Training is part of our service model. We help young people and team members develop confidence with modern web tools, collaborative development, design thinking, and project delivery. Our LaneForge direction extends this mission by helping students discover suitable career paths and build skills through practice. From an initial consultation to launch and continued improvement, TechSquad brings software engineering, design, growth, and mentorship together in one collaborative team.
+          </p>
+        </Reveal>
+      </section>
+
       <section className="mx-auto max-w-7xl px-4 pt-20 pb-24 sm:pt-24">
         <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
           {text.services.map((s) => (

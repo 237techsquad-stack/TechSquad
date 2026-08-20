@@ -175,10 +175,8 @@ function Index() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-normal sm:text-7xl md:text-[84px]"
             >
-              <span className="text-[#071733]">{text.heroLead}</span>
-              <span className="text-gradient-hero">
-                <ScrambleText text={text.heroFocus} />
-              </span>
+              <span className="text-[#071733]">TechSquad Cameroon - Your Tech Partner in </span>
+              <span className="text-gradient-hero">Douala</span>
             </motion.h1>
 
             <motion.p
@@ -346,6 +344,21 @@ function Index() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-4xl px-4 pb-20">
+        <Reveal>
+          <h2 className="text-3xl font-bold tracking-normal sm:text-4xl">Technology that helps Cameroon move forward</h2>
+          <p className="mt-5 text-base leading-8 text-muted-foreground">
+            TechSquad Cameroon is a practical technology partner for people, organizations, and growing businesses in Douala and across Cameroon. We combine web development, software engineering, IT support, digital design, and technical training to turn everyday challenges into useful digital systems. Our team builds responsive websites, business platforms, internal tools, and mobile-first experiences that are clear for customers and manageable for the teams who use them.
+          </p>
+          <p className="mt-4 text-base leading-8 text-muted-foreground">
+            A strong online presence is more than a page with a logo. It should explain what a business offers, help customers take action, and give owners a dependable way to manage information. Our web development process begins with the real needs of a Cameroon-based business, then moves through planning, interface design, implementation, testing, and deployment. We also support teams that need help improving an existing website, organizing their digital workflow, or choosing technology that fits their budget and goals.
+          </p>
+          <p className="mt-4 text-base leading-8 text-muted-foreground">
+            TechSquad also invests in people. Through training, mentorship, and collaborative projects, young developers and designers learn by working on real software solutions. From Douala to the wider African technology community, our mission is to make digital skills more accessible and help ambitious teams build with confidence. Whether you need a new website, IT guidance, software development, or a trusted technology team for your next project, TechSquad Cameroon is ready to build something useful with you.
+          </p>
+        </Reveal>
+      </section>
+
       <section className="relative mx-auto max-w-7xl px-4 pb-24">
         <div className="relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white p-1 shadow-glass">
           <div className="relative overflow-hidden rounded-[calc(1.75rem-4px)] bg-[#08172b] p-8 sm:p-14">
@@ -373,6 +386,7 @@ function Index() {
                     <img
                       src={laneForgeLogo}
                       alt="LaneForge logo"
+                      loading="lazy"
                       className="h-20 w-full object-contain sm:h-24 lg:h-28"
                     />
                   </div>

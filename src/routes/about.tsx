@@ -163,6 +163,7 @@ function AboutPage() {
               <img
                 src={vishiCampusImage}
                 alt="VISHI Higher Institute campus"
+                loading="lazy"
                 className="h-[320px] w-full object-cover sm:h-[430px]"
               />
             </div>
@@ -226,6 +227,21 @@ function AboutPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-4xl px-4 pb-20">
+        <Reveal>
+          <h2 className="text-3xl font-bold tracking-normal sm:text-4xl">A Cameroon technology team built in Douala</h2>
+          <p className="mt-5 text-base leading-8 text-muted-foreground">
+            TechSquad Cameroon began as a student-led initiative at VISHI Higher Institute and is growing into a technology team focused on useful, locally relevant digital work. Our story is rooted in Douala, where students and young professionals came together to learn software engineering, web development, design, branding, and project leadership by building together. That beginning still shapes how we work: we value curiosity, shared responsibility, and solutions that people can actually use.
+          </p>
+          <p className="mt-4 text-base leading-8 text-muted-foreground">
+            We believe Cameroon has talented builders with ideas worth supporting. A website or software platform should not feel disconnected from the realities of its users. It should be accessible on common devices, communicate clearly, and solve a real problem for a business, school, community, or individual. Our team therefore combines technical implementation with listening, research, visual communication, testing, and ongoing learning. This makes our web development and software projects more useful from the first conversation through launch.
+          </p>
+          <p className="mt-4 text-base leading-8 text-muted-foreground">
+            Our work includes client software services, student-focused initiatives, community events, and training opportunities. LaneForge represents our long-term commitment to helping young people understand career possibilities and develop practical skills. As TechSquad grows from Douala to wider Cameroon and Africa, we remain committed to building trustworthy technology, sharing knowledge, and creating opportunities for the next generation of developers, designers, and digital leaders.
+          </p>
+        </Reveal>
+      </section>
+
       <section className="mx-auto max-w-7xl px-4 py-24">
         <Reveal className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand-blue">{text.galleryLabel}</p>
@@ -248,6 +264,7 @@ function AboutPage() {
                       <img
                         src={item.imageUrl}
                         alt={item.title}
+                        loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(2,6,23,0.18)_55%,rgba(2,6,23,0.82)_100%)]" />
